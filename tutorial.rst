@@ -22,10 +22,14 @@ Tutorial
 Tag strings start with the functionality in f-strings, as described in PEP 498.
 Let's take a look first at a simple example with f-strings::
 
+.. code-block: python
+
     name = 'Bobby'
     s = f"Hello, {name}, it's great to meet you!"
 
 The above code is the equivalent of writing this code::
+
+.. code-block: python
 
     name = 'Bobby'
     s = 'Hello, ' + format(name, '') + ", it's great to meet you!"
@@ -43,10 +47,12 @@ But consider this shell example. You want to use ``subprocess.run``, but for
 your scenario you would like to use the full power of the shell, including pipes
 and subprocesses. This means you have to use ``use_shell=True``::
 
+.. code-block: python
+
     from subprocess import run
 
     path = 'some/path/to/data'
-    print(run(f'ls -ls {path} | (echo "First 5 results from ls:"; head -5)', use_shell=True))
+    print(run(f'ls -ls {path} | (echo "First 5 results from ls:"; head -5)', shell=True))
 
 However, this code as written is broken on any untrusted input. In other words,
 we have a shell injection attack, or from xkcd, a Bobby Tables problem::
